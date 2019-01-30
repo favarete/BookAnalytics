@@ -4,8 +4,6 @@ import glob
 import errno
 
 path_to_global = _global_.session_info['word_frequency']
-
-characters_data = map(str.lower, _global_.key_words['characters'])
 path = 'test_files/*.md'
 
 files = glob.glob(path)
@@ -18,10 +16,11 @@ def catch():
 
 				path_to_global[new_key] = {"characters": {} }
 				wordcount = Counter(f.read().lower().split())
-				for key in characters_data:
+				
+				for key in map(str.lower, _global_.key_words['characters']):
 					if key in wordcount:
 						path_to_global[new_key]["characters"][key] = wordcount[key]
-						
+
 		except IOError as exc:
 			if exc.errno != errno.EISDIR:
 				raise

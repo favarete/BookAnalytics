@@ -9,7 +9,7 @@ from features import *
 
 def main():
 	word_frequency.catch()
-	print _global_.session_info
+	print(_global_.session_info)
 
 class View(GridLayout):
 	pass
